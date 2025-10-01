@@ -416,23 +416,26 @@ img, video { max-width: 100%; height: auto; }
 }
 
 /* Phone layout (≈ <= 680px) */
+/* Phones: wrap links instead of horizontal scroll */
 @media (max-width: 680px) {
-  /* Top nav: wrap nicely with larger tap targets */
   .top-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px 10px;
-    padding: 10px 8px;
+    gap: 4px 6px;                 /* smaller gap */
+    padding: 8px max(8px, env(safe-area-inset-left)) 8px max(8px, env(safe-area-inset-right));
+    overflow: visible;
   }
   .top-nav a {
     display: inline-block;
-    padding: 8px 10px;           /* bigger tap area */
-    font-size: 0.95em;
-    margin: 0;                   /* we use gap now */
+    margin: 0;                    /* use gap instead of margins */
+    padding: 6px 8px;             /* smaller tap area than before */
+    font-size: 0.92em;
+    flex: 0 1 auto;
   }
+}
 
-  /* Header: stack image above text and center it */
+  /* Header stacks nicely on phones */
   .profile-header {
     flex-direction: column;
     align-items: center;
@@ -441,11 +444,11 @@ img, video { max-width: 100%; height: auto; }
     margin: 24px 0;
   }
   .profile-pic { width: 120px; height: 120px; }
-  .profile-right h1 { font-size: 1.6em; }
 
-  /* Anchors: nav height grows when it wraps, so offset more */
+  /* Titles won’t hide under sticky nav */
   [id] { scroll-margin-top: 100px; }
-}
+
+
 
 /* Very narrow phones (≈ <= 420px): let nav scroll horizontally if needed */
 @media (max-width: 420px) {
