@@ -447,7 +447,7 @@ img, video { max-width: 100%; height: auto; }
 
   /* Titles won’t hide under sticky nav */
   [id] { scroll-margin-top: 100px; }
-}
+
 
 
 /* Very narrow phones (≈ <= 420px): let nav scroll horizontally if needed */
