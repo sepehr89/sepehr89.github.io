@@ -404,3 +404,56 @@ footer {
 @media (max-width: 900px) {
   .others-grid { grid-template-columns: 1fr; }
 }
+
+/* --- Mobile polish ------------------------------------------------------ */
+
+/* Make images never overflow on tiny screens */
+img, video { max-width: 100%; height: auto; }
+
+/* Slightly tighter padding on small screens */
+@media (max-width: 900px) {
+  .container { padding: 16px; }
+}
+
+/* Phone layout (≈ <= 680px) */
+@media (max-width: 680px) {
+  /* Top nav: wrap nicely with larger tap targets */
+  .top-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 10px;
+    padding: 10px 8px;
+  }
+  .top-nav a {
+    display: inline-block;
+    padding: 8px 10px;           /* bigger tap area */
+    font-size: 0.95em;
+    margin: 0;                   /* we use gap now */
+  }
+
+  /* Header: stack image above text and center it */
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .profile-pic { width: 120px; height: 120px; }
+  .profile-right h1 { font-size: 1.6em; }
+
+  /* Anchors: nav height grows when it wraps, so offset more */
+  [id] { scroll-margin-top: 100px; }
+}
+
+/* Very narrow phones (≈ <= 420px): let nav scroll horizontally if needed */
+@media (max-width: 420px) {
+  .top-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .top-nav a { flex: 0 0 auto; }
+}
