@@ -1,0 +1,406 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;  /* smooth scrolling for anchors */
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+  background: #fdfdfd;
+  color: #222;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Top Navigation */
+.top-nav {
+  width: 100%;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+  text-align: center;
+  position: sticky;  /* stays visible when scrolling */
+  top: 0;
+  z-index: 1000;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: #0066cc;
+  margin: 0 18px;
+  font-weight: 500;
+}
+
+.top-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.profile-left {
+  flex: 1;
+  text-align: center;
+}
+
+.profile-pic {
+  width: 160px;
+  height: 200px;
+  border-radius: 10%;
+}
+
+.profile-right {
+  flex: 3;
+}
+
+.profile-right h1 {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  font-size: 1.2em;
+  color: #444;
+}
+
+/* Sections */
+section {
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  margin: 40px 0 20px;
+}
+
+#about ul { 
+    --tab: 4ch;
+    /* Indent the entire list by one “tab” from the left edge */
+    margin-left: var(--tab);
+    /* Keep a comfortable base offset so bullets don’t collide with text */
+    /* padding-left: 1.25rem; */
+    list-style-position: outside;
+  }
+
+  /* Add an extra “tab” gap between the bullet and the text */
+  #about ul > li {
+    padding-left: var(--tab);
+  }
+
+  /* Projects */
+.projects .project-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 16px;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  margin-bottom: 16px;
+}
+
+.project-media {
+  display: block;
+  line-height: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+.project-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-content h3 {
+  font-size: 1.15em;
+  margin-bottom: 6px;
+}
+.project-content h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.project-content h3 a:hover {
+  text-decoration: underline;
+}
+
+.project-content p {
+  margin-bottom: 8px;
+}
+
+.project-meta a {
+  color: #0066cc;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.project-meta a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .projects .project-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Skills (anchored levels) ===== */
+.skills { margin-bottom: 50px; }
+.skills h2 { margin-bottom: 14px; }
+
+/* Legend */
+.skill-legend {
+  font-size: 0.95em;
+  color: #444;
+  background: #fbfbfb;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+}
+.skill-legend .sep { margin: 0 8px; color: #aaa; }
+
+/* Group */
+.skill-group { margin: 22px 0 28px; }
+.skill-group h3 {
+  font-size: 1.15em;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+/* Row */
+.skill-row {
+  display: grid;
+  grid-template-columns: 240px 1fr auto; /* name | bar | meta */
+  gap: 14px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #e9e9e9;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  margin-bottom: 10px;
+}
+.skill-name { font-weight: 500; color: #222; }
+
+/* Meter (5 tick segments) */
+.meter {
+  position: relative;
+  height: 12px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  overflow: hidden;
+  min-width: 200px;
+}
+.meter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to right,
+    transparent 0 19.5%,
+    rgba(0,0,0,0.06) 19.5% 20%
+  );
+  pointer-events: none;
+}
+
+/* Fill widths (cap at ~90%) */
+.fill { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #4f86ff, #2563eb); }
+.fill.l-advanced   { width: 90%; }
+.fill.l-proficient { width: 70%; }
+.fill.l-working    { width: 50%; }
+.fill.l-familiar   { width: 30%; }
+
+/* Meta chips */
+.skill-meta { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.chip {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #dfe3ea;
+  background: #fafafa;
+  color: #333;
+  font-size: 0.85em;
+  text-decoration: none;
+}
+.chip:hover { text-decoration: underline; }
+.chip.muted { color: #666; background: #f6f7f9; }
+.chip.level { color: #0f2a66; border-color: #cfe0ff; background: #eef4ff; }
+
+/* Level color accents (optional stronger tint) */
+.chip.level.advanced   { background: #e8f0ff; border-color: #c7dbff; }
+.chip.level.proficient { background: #eef7ff; border-color: #d6e9ff; }
+.chip.level.working    { background: #f4faff; border-color: #def2ff; }
+.chip.level.familiar   { background: #f8fbff; border-color: #e7f3ff; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .skill-row { grid-template-columns: 1fr; align-items: stretch; }
+  .meter { min-width: 100%; }
+  .skill-meta { justify-content: flex-start; }
+}
+
+/* ===== Publications ===== */
+.publications { margin-bottom: 48px; }
+.publications h2 { margin-bottom: 12px; }
+
+.pub-intro {
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.pub-year {
+  margin: 26px 0 10px;
+  font-weight: 700;
+  color: #1f2a44;
+  letter-spacing: 0.02em;
+}
+
+.pub-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px 16px;
+  padding: 16px;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  margin-bottom: 12px;
+}
+
+.pub-title {
+  font-size: 1.05em;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.pub-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.pub-title a:hover { text-decoration: underline; }
+
+.pub-authors {
+  color: #333;
+  margin-bottom: 4px;
+}
+.pub-venue {
+  color: #666;
+  font-size: 0.95em;
+}
+
+.pub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-content: start;
+  justify-content: flex-end;
+}
+
+/* Reuse your chip style; add OA accent */
+.chip.oa {
+  border-color: #bfe3bf;
+  background: #eef9ee;
+  color: #145214;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .pub-card { grid-template-columns: 1fr; }
+  .pub-actions { justify-content: flex-start; }
+}
+
+/* ===== Others (Awards, Certificates, Teaching, Volunteering) ===== */
+.others { margin-bottom: 50px; }
+.others h2 { margin-bottom: 14px; }
+
+.others-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two columns on wide screens */
+  gap: 18px;
+}
+
+.others-group {
+  padding: 16px;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+
+.others-group h3 {
+  font-size: 1.15em;
+  margin-bottom: 12px;
+  color: #1f2a44;
+}
+
+/* Individual items inside a group */
+.other-item {
+  padding: 12px;
+  border: 1px solid #eef0f3;
+  border-radius: 10px;
+  background: #fafbff;
+  margin-bottom: 10px;
+}
+
+.other-item:last-child { margin-bottom: 0; }
+
+.other-item h4 {
+  font-size: 1.02em;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.desc { color: #333; }
+
+.links { margin-top: 6px; }
+
+.bullets {
+  margin: 4px 0 0 18px;
+  color: #333;
+}
+.bullets li { margin-bottom: 4px; }
+
+/* Reuse existing chips; minor tint for consistency */
+.chip { display: inline-block; padding: 4px 8px; border-radius: 999px; border: 1px solid #dfe3ea; background: #fafafa; color: #333; font-size: 0.85em; text-decoration: none; }
+.chip:hover { text-decoration: underline; }
+.chip.muted { color: #666; background: #f6f7f9; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .others-grid { grid-template-columns: 1fr; }
+}
